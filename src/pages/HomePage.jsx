@@ -1,14 +1,19 @@
+import axios from "axios";
 import { Header } from "../components/Header";
 import "./HomePage.css";
 import { products } from "../../starting-code/data/products";
 
 export function HomePage() {
-  fetch("http://localhost:3000/api/products").then((response) => {
-    // console.log(response);
-    response.json().then((data) => {
-      console.log(data);
-    });
+  axios.get("http://localhost:3000/api/products").then((response) => {
+    console.log(response.data);
   });
+
+  // fetch("http://localhost:3000/api/products").then((response) => {
+  //   // console.log(response);
+  //   response.json().then((data) => {
+  //     console.log(data);
+  //   });
+  // });
   // same as above
   // fetch("http://localhost:3000/api/products")
   //   .then((response) => {
