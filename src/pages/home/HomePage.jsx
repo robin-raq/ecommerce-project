@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import "./HomePage.css";
 import { ProductsGrid } from "./ProductsGrid";
 
-export function HomePage({ cart }) {
+export function HomePage({ cart, fetchCartData }) {
   const [products, setProducts] = useState([]);
 
   // useEffect(() => {
@@ -26,7 +26,7 @@ export function HomePage({ cart }) {
       <title>Ecommerce Project</title>
       <Header cart={cart} />
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} fetchCartData={fetchCartData} />
       </div>
     </>
   );
