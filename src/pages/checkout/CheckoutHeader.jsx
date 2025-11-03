@@ -1,5 +1,5 @@
 import "./CheckoutHeader.css";
-export function CheckoutHeader() {
+export function CheckoutHeader({ cart }) {
   return (
     <>
       <div className="checkout-header">

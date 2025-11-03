@@ -25,7 +25,7 @@ export function CheckoutPage({ cart, fetchCartData }) {
   return (
     <>
       <title>Checkout</title>
-      <CheckoutHeader />
+      <CheckoutHeader cart={cart} />
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
@@ -37,7 +37,10 @@ export function CheckoutPage({ cart, fetchCartData }) {
             fetchCartData={fetchCartData}
           />
 
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <PaymentSummary
+            paymentSummary={paymentSummary}
+            fetchCartData={fetchCartData}
+          />
         </div>
       </div>
     </>
