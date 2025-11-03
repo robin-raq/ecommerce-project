@@ -21,7 +21,7 @@ export function CheckoutPage({ cart, fetchCartData }) {
     };
     fetchDeliveryData();
     fetchPaymentData();
-  }, []);
+  }, [cart]);
   return (
     <>
       <title>Checkout</title>

@@ -4,8 +4,6 @@ import { formatMoney } from "../../utils/money";
 import { useState } from "react";
 
 export function DeliveryOptions({ deliveryOptions, cartItem, fetchCartData }) {
-  const [isSelected, setIsSelected] = useState(false);
-
   return (
     <div className="delivery-options">
       <div className="delivery-options-title">Choose a delivery option:</div>
