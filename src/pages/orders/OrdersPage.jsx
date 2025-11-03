@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import "./OrdersPage.css";
 import { OrdersGrid } from "./OrdersGrid";
 
-export function OrdersPage({ cart }) {
+export function OrdersPage({ cart, fetchCartData }) {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     const fetchOrdersData = async () => {
@@ -19,7 +19,7 @@ export function OrdersPage({ cart }) {
       <Header cart={cart} />
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
-        {orders && <OrdersGrid orders={orders} />}
+        {orders && <OrdersGrid orders={orders} fetchCartData={fetchCartData} />}
       </div>
     </>
   );
