@@ -52,7 +52,9 @@
 .checkout-page .cart-item-container {
   margin-bottom: 12px;
 }
-
+.quantity-textbox {
+  width: 50px;
+}
 .checkout-page .payment-summary {
   padding-bottom: 5px;
 }
@@ -110,7 +112,6 @@
 }
 
 .checkout-page .product-price {
-
   font-weight: 700;
   margin-bottom: 5px;
 }
@@ -152,7 +153,6 @@
 }
 
 .checkout-page .delivery-option-date {
-
   font-weight: 500;
   margin-bottom: 3px;
 }
