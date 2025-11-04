@@ -1,15 +1,30 @@
 import axios from "axios";
 import { formatMoney } from "../../utils/money";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export function CartItemDetails({ cartItem, fetchCartData }) {
+  const [quantity, setQuantity] = useState(1);
   const [updateStatus, setUpdateStatus] = useState(false);
   const deleteCartItem = async () => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`);
     await fetchCartData();
   };
-  const updateQuantity = function () {
-    setUpdateStatus(!updateStatus);
+  const updateQuantity = async () => {
+    // Switch between true and false for updateStatus.
+    if (updateStatus) {
+      await axios.put(`/api/cart-items/${cartItem.productId}`, {
+        quantity: Number(quantity),
+      });
+      await fetchCartData();
+      setUpdateStatus(false);
+    } else {
+      setUpdateStatus(true);
+    }
   };
+  const changeQuantity = function (e) {
+    console.log(e.target.value);
+    setQuantity(e.target.value);
+  };
+
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -23,7 +38,12 @@ export function CartItemDetails({ cartItem, fetchCartData }) {
           <span>
             Quantity:
             {updateStatus ? (
-              <input type="text" className="quantity-textbox" />
+              <input
+                type="text"
+                className="quantity-textbox"
+                value={quantity}
+                onChange={changeQuantity}
+              />
             ) : (
               <span className="quantity-label">{cartItem.quantity}</span>
             )}
