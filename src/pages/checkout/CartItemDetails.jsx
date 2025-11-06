@@ -24,7 +24,14 @@ export function CartItemDetails({ cartItem, fetchCartData }) {
     console.log(e.target.value);
     setQuantity(e.target.value);
   };
-
+  const manageQuantityAction = function (e) {
+    if (e.key === "Enter") {
+      updateQuantity();
+    } else if (e.key === "Escape") {
+      setQuantity(cartItem.quantity);
+      setUpdateStatus(false);
+    }
+  };
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -43,6 +50,7 @@ export function CartItemDetails({ cartItem, fetchCartData }) {
                 className="quantity-textbox"
                 value={quantity}
                 onChange={changeQuantity}
+                onKeyDown={manageQuantityAction}
               />
             ) : (
               <span className="quantity-label">{cartItem.quantity}</span>
