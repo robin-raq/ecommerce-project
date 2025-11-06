@@ -1,6 +1,23 @@
-import { Link } from "react-router";
+import axios from "axios";
+import { Link, useNavigate, useSearchParams } from "react-router";
+import { useState, useEffect } from "react";
 import "./Header.css";
+
 export function Header({ cart }) {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get("search");
+  const [searchQuery, setSearchQuery] = useState(searchText || "");
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    console.log(e.target.value);
+  };
+  const completeSearch = (e) => {
+    console.log(e.target.value);
+    navigate(`/?search=${searchQuery}`);
+  };
+
   let total = 0;
   cart.forEach((item) => {
     total += item.quantity;
@@ -16,9 +33,15 @@ export function Header({ cart }) {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
 
-          <button className="search-button">
+          <button className="search-button" onClick={completeSearch}>
             <img className="search-icon" src="images/icons/search-icon.png" />
           </button>
         </div>
