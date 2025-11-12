@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export function Product({ product, fetchCartData }) {
   const [showAdded, setShowAdded] = useState();
-  const [selectedQuantity, setSelectedQuantity] = useState(false);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const addToCart = async () => {
     console.log("clicked");
     setShowAdded(true);
